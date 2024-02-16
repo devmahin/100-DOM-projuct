@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: #fff;
+  color: #333;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.container {
+	display: flex;
+	border: 4px solid #404040;
+	background: #FFDC00;
+	border-radius: 10rem;
+	width: 60%;
+	padding: 1rem;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+.col-1 {
+	width: 45%;
+}
+
+.col-2 {
+	width: 25%;
+}
+
+.col > button, .number {
+	width: 100%;
+	background: #FFDC00;
+	border: 0px;
+	text-align: center;
+}
+
+.button {
+	font-family: sans-serif;
+	font-size: 2em;
+}
+
+button {
+	color: #FF370C;
+	user-select: none;
+	outline: none;
+    font-size: 50px;
+}
+button:disabled{
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="frame">
+        <div class="center container">
+              <div class="button col col-1">
+                  <button id="minus-btn">-</button>
+              </div>
+
+              <div class="number col col-2">
+                  <h1 id="count">0</h1>
+              </div>
+
+              <div class="button col col-1">
+                  <button id="plus-btn">+</button>
+            </div>
+          </div>
+      </div>
+
+
+      <script>
+        const minus = document.getElementById("minus-btn");
+        const plus = document.getElementById("plus-btn");
+        const count = document.getElementById("count")
+        
+        let countBtn = 0;
+        
+        function mathMatichOpration(value){
+            countBtn += value;
+            count.innerText = countBtn;
+            if(countBtn >= 10){
+                plus.setAttribute("disabled", true)    
+            }else{
+                plus.removeAttribute("disabled", false)   
+            }
+            if(countBtn <= 0){
+                minus.setAttribute("disabled", true)    
+            }else{
+                minus.removeAttribute("disabled", false)   
+            }
+
+        
+
+        }
+
+        minus.addEventListener("click", function(){
+            mathMatichOpration(-1)
+        })
+        plus.addEventListener("click", function(){
+            mathMatichOpration(1)
+        })
+
+      </script>
+    
+</body>
+</html>
