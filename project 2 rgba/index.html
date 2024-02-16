@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-size: 40px;
+
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div{
+            width: 200px ;
+            height: 200px;
+            border: 2px solid red;
+        }
+        #copy{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <main >
+        <h1>RGBA color genaretor</h1>
+        <div id="color">
+
+        </div>
+        <p id="show_rgb"></p>
+        <button id="change">Change color</button>
+        <button id="copy">Copy color code</button>
+    </main>
+    
+
+    <script>
+        function rgbaColorRenaretor(){
+            let a = Math.round(Math.random() * 250);
+            let b = Math.round(Math.random() * 250);
+            let c = Math.round(Math.random() * 250);
+
+
+            return `rgb(${a}, ${b}, ${c})`;
+        }
+
+        function randomChange (){
+            const color = document.getElementById("color");
+            const show_rgb = document.getElementById("show_rgb");
+            let colorStore =  rgbaColorRenaretor();
+            color.style.backgroundColor = colorStore;
+            show_rgb.innerText = colorStore;
+        }
+        
+
+        function copyColorCode (){
+            const copyColorCode = document.getElementById("show_rgb");
+            const main = document.querySelector("main");
+            let input = document.createElement("input");
+            input.value = copyColorCode.innerText;
+            console.log(input)
+            main.appendChild(input);
+
+            input.select()
+            document.execCommand('copy')
+            main.removeChild(input);
+            alert("RGB vlaue copy")
+
+        }
+        document.getElementById("copy").addEventListener("click", () =>{
+            copyColorCode();
+        })
+
+        document.getElementById("change").addEventListener("click", () => {
+            randomChange()
+        })
+        randomChange()
+
+    </script>
+</body>
+</html>
