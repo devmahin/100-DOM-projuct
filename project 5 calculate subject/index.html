@@ -9,14 +9,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="grid place-items-center h-[100vh]">
 
-    <form action="">
-        <input type="number">
-        <input type="number">
-        <input type="number">
-        <input type="number">
-        <input type="submit" class="btn w-full">
+    <form action="" class="w-2/3" onsubmit="formFun(event)" id="form">
+        <input type="number" name="english" class="input bottom-2 border-red-400 w-full">
+        <input type="number" name="bayligi" class="input bottom-2 border-red-400 w-full">
+        <input type="number" name="math" class="input bottom-2 border-red-400 w-full">
+        <input type="number" name="bangal" class="input bottom-2 border-red-400 w-full">
+        <input type="submit"  class="btn w-full bg-fuchsia-800 mx-auto">
+        <h2 class="text-3xl font-bold text-center" id="result"></h2>
     </form>
 
     <script src="script.js"></script>
